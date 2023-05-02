@@ -264,8 +264,10 @@ static void chip8_exec_extended(struct chip8 *chip, uint16_t opcode)
 
     // DRW: Mostra un n-byte sprite in posizione (Vx, Vy) e se vi è una collisione allora Vf = 1
     case 0xD000:
+    {
         const char *sprite = (const char *)&chip->memory.memory[chip->registers.I];
         chip->registers.V[0x0f] = chip8_screen_draw_sprite(&chip->screen, chip->registers.V[x], chip->registers.V[y], sprite, n);
+    }
     break;
 
     // Gestione tasti
